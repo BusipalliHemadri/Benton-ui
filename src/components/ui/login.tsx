@@ -29,11 +29,10 @@ export function LoginForm({
         const username = formData.get('email')?.toString();
         const password = formData.get('password')?.toString();
 
-        // Validate credentials
         if (username === "admin" && password === "admin") {
-            setError(null); // Clear any existing errors
-            onLogin(); // Call the login handler to set authentication
-            navigate("/dashboard"); // Redirect to the dashboard
+            setError(null); 
+            onLogin(); 
+            navigate("/properties"); 
         } else {
             setError("Invalid username or password. Please try again.");
         }

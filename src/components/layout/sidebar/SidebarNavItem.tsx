@@ -18,7 +18,8 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
     <button
       onClick={onClick}
       className={cn(
-        "flex items-center cursor-pointer gap-2 p-2 hover:text-[#fff] rounded-lg transition-all",
+        // "flex items-center cursor-pointer gap-2 p-2 hover:text-[#fff] rounded-lg transition-all",
+        "flex items-center cursor-pointer gap-2 p-2 rounded-lg hover:bg-[#2eaef0] transition-all duration-300",
         !expanded && "justify-center"
       )}
     >
