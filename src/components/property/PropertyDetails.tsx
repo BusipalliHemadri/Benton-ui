@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, act } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DataGrid, {
   Column,
   Paging,
@@ -31,6 +31,8 @@ export const PropertyDetails: React.FC = () => {
   const { id } = useParams();
   const properties = usePropertyStore((state) => state.properties);
   const dataGridRef = useRef(null);
+  const navigate = useNavigate();
+
 
   const [isWindowSizeSmall, setIsWindowSizeSmall] = useState(false);
   // const property = mockFlats.find((data) => data.buildingId === Number(id)) || null;
@@ -38,7 +40,13 @@ export const PropertyDetails: React.FC = () => {
 
 
   console.log(activeFilter)
+  const handleRowClick = (e) => {
+    const selectedRoomId = e.data.roomId; // Adjust this to match your data key
+    // history.push(`/property/${id}/unit/${selectedRoomId}`);
+    // navigate(`/property/${e.data.id}`);
 
+    navigate(`/property/${id}/unit/${selectedRoomId}`)
+  };
 
   useEffect(() => {
     const checkWindowSize = () => {
@@ -126,6 +134,7 @@ export const PropertyDetails: React.FC = () => {
           dataSource={activeFilter === 'all' ? mockFlats.filter((data) => (data.buildingId === Number(id))) : mockFlats.filter((data) => (data.buildingId === Number(id) && data.status === activeFilter))}
           showBorders={true}
           columnAutoWidth={true}
+          onRowClick={handleRowClick}
           rowAlternationEnabled={true}
           hoverStateEnabled={true}
           allowColumnReordering={true}
@@ -189,14 +198,14 @@ export const PropertyDetails: React.FC = () => {
             cellRender={MoneyCell}
             alignment="center"
           />
-         
+
           <Column
             dataField="status"
             caption="Status"
             cellRender={StatusCell}
             alignment="left"
           />
-           <Column
+          <Column
             dataField="leaseEnd"
             caption="Lease End"
             alignment="left"

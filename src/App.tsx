@@ -5,22 +5,25 @@ import { Dashboard } from './pages/Dashboard';
 import { PropertiesPage } from './pages/PropertiesPage';
 import { PropertyDetails } from './components/property/PropertyDetails';
 import { AddPropertyForm } from './components/forms/AddPropertyForm';
-import Header from './components/header';// Import the Header component
+import Header from './components/header'; // Import the Header component
 import { LoginForm } from './components/ui/login';
+import { UnitDetails } from './components/property/TenantInfo';
 
 export const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <Router>
-      {/* Render Header only when authenticated */}
       {isAuthenticated && <Header setIsAuthenticated={setIsAuthenticated} />}
       <Routes>
-        {/* Login Route */}
         <Route
           path="/"
           element={
-            isAuthenticated ? <Navigate to="/dashboard" /> : <LoginForm onLogin={() => setIsAuthenticated(true)} />
+            isAuthenticated ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <LoginForm onLogin={() => setIsAuthenticated(true)} />
+            )
           }
         />
 
@@ -73,6 +76,20 @@ export const App: React.FC = () => {
             isAuthenticated ? (
               <DashboardLayout>
                 <PropertyDetails />
+              </DashboardLayout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+
+        {/* Unit Details Route */}
+        <Route
+          path="/property/:id/unit/:unitId"
+          element={
+            isAuthenticated ? (
+              <DashboardLayout>
+                <UnitDetails />
               </DashboardLayout>
             ) : (
               <Navigate to="/" />
