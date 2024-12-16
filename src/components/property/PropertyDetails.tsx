@@ -63,6 +63,7 @@ export const PropertyDetails: React.FC = () => {
       worksheet.columns = [
         { header: 'Room Number', key: 'roomNumber', width: 15 },
         { header: 'Weekly Rent', key: 'rentAmount', width: 15 },
+        { header: 'Lease End', key: 'leaseEnd', width: 15 },
         { header: 'Status', key: 'status', width: 15 },
       ];
 
@@ -82,6 +83,7 @@ export const PropertyDetails: React.FC = () => {
         body: dataSource.map((row) => [
           row.roomNumber,
           row.rentAmount,
+          row.leaseEnd,
           row.status,
         ]),
         styles: { fontSize: 10, halign: 'left' },
@@ -98,14 +100,18 @@ export const PropertyDetails: React.FC = () => {
 
   return (
     <div className="space-y-6">
+
+
       <div className="flex items-center gap-4">
-        <h5 className="text-sm text-white">
+        <h5 className="text-sm text-black">
           <Breadcrumbs />
         </h5>
       </div>
-      <h2 className="text-xl text-white font-bold">
+
+      <h2 className="text-xl text-black font-bold">
         {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
       </h2>
+
 
       <StatsSection
         propertyId={id}
@@ -117,7 +123,7 @@ export const PropertyDetails: React.FC = () => {
       <div className="bg-card p-6 rounded-lg shadow-lg overflow-hidden">
         <DataGrid
           ref={dataGridRef}
-          dataSource={ activeFilter=== 'all' ? mockFlats.filter((data) => ( data.buildingId === Number(id))):  mockFlats.filter((data) => ( data.buildingId === Number(id)&& data.status === activeFilter))}
+          dataSource={activeFilter === 'all' ? mockFlats.filter((data) => (data.buildingId === Number(id))) : mockFlats.filter((data) => (data.buildingId === Number(id) && data.status === activeFilter))}
           showBorders={true}
           columnAutoWidth={true}
           rowAlternationEnabled={true}
@@ -129,7 +135,7 @@ export const PropertyDetails: React.FC = () => {
           allowColumnResizing={true}
           style={{
             textTransform: 'capitalize',
-            height: isWindowSizeSmall ? '60vh' : '74vh',
+            height: isWindowSizeSmall ? '52vh' : '74vh',
           }}
           remoteOperations={{
             filtering: true,
@@ -183,10 +189,16 @@ export const PropertyDetails: React.FC = () => {
             cellRender={MoneyCell}
             alignment="center"
           />
+         
           <Column
             dataField="status"
             caption="Status"
             cellRender={StatusCell}
+            alignment="left"
+          />
+           <Column
+            dataField="leaseEnd"
+            caption="Lease End"
             alignment="left"
           />
           <Pager

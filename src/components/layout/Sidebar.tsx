@@ -21,7 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        "h-screen fixed left-0 top-0 z-40 flex flex-col transition-all duration-300  shadow-sm bg-[#3b4755]",
+        "h-screen  left-0 top-0 z-40 flex flex-col transition-all duration-300  shadow-sm bg-card",
         expanded ? "w-64" : "w-16",
         className
       )}
@@ -31,7 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         setShowPropertySubmenu(false);
       }}
     >
-      <div className="p-4 flex items-center justify-between  text-[#fff]">
+      <div className="p-4 flex items-center justify-between  text-[#000]">
         <span className={cn("overflow-hidden transition-all", expanded ? "w-32" : "w-0")}>
           Mackeco Properties
         </span>
@@ -40,26 +40,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
       <nav className="flex items-center flex-col gap-2 p-4">
         <SidebarNavItem
-          icon={<LayoutDashboard className="w-4 h-4 text-[#eb6e34]" />}
+          icon={<LayoutDashboard className="w-4 h-4 text-[#000]" />}
           label="Dashboard"
           onClick={() => navigate('/')}
           expanded={expanded}
         />
 
         <SidebarSubmenu
-          icon={<Building2 className="w-4 h-4 text-[#eb6e34]" />}
+          icon={<Building2 className="w-4 h-4 text-[#000]" />}
           label="Properties"
           expanded={expanded}
           showSubmenu={showPropertySubmenu}
           onToggle={() => expanded && setShowPropertySubmenu(!showPropertySubmenu)}
           items={[
             {
-              icon: <Building2 className="w-4 h-4 text-[#eb6e34]" />,
+              icon: <Building2 className="w-4 h-4 text-[#000] " />,
               label: "View All Properties",
               onClick: () => navigate('/properties')
             },
             {
-              icon: <PlusCircle className="w-4 h-4 text-[#eb6e34]" />,
+              icon: <PlusCircle className="w-4 h-4 text-[#000]" />,
               label: "Add Property",
               onClick: () => navigate('/properties/add')
             }

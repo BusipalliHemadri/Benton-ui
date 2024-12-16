@@ -1,6 +1,4 @@
 import React from 'react';
-import { Home } from 'lucide-react';
-
 interface StatsCardProps {
   title: string;
   count: number;

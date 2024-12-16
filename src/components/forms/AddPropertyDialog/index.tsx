@@ -20,10 +20,10 @@ export const AddPropertyDialog: React.FC<AddPropertyDialogProps> = ({ className 
         <div className={`bg-card px-4 py-3 rounded-lg shadow-md cursor-pointer transform transition-all duration-300 hover:scale-105 ${className}`}>
           <div className="flex items-center justify-between h-full">
             <div>
-              <p className="text-white text-lg font-medium mb-1">Add</p>
+              <p className="text-black text-lg font-medium mb-1">Add</p>
             </div>
             <div className="text-white opacity-80">
-              <Plus className='text-[#eb6e34]' size={20} />
+              <Plus className='text-[#000]' size={20} />
             </div>
           </div>
         </div>

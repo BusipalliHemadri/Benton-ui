@@ -23,7 +23,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
       )}
     >
       {icon}
-      <span className={cn("overflow-hidden transition-all text-[#fff] hover:text-[#eb6e34]", expanded ? "w-32" : "w-0")}>
+      <span className={cn("overflow-hidden transition-all text-[#] hover:text-[#000]", expanded ? "w-32" : "w-0")}>
         {label}
       </span>
     </button>

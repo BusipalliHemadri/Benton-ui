@@ -35,7 +35,7 @@ export const SidebarSubmenu: React.FC<SidebarSubmenuProps> = ({
         )}
       >
         {icon}
-        <span className={cn("overflow-hidden text-[#fff] hover:text-[#eb6e34] transition-all flex-1 text-left", expanded ? "w-32" : "w-0")}>
+        <span className={cn("overflow-hidden text-[#000] hover:text-[#000] transition-all flex-1 text-left", expanded ? "w-32" : "w-0")}>
           {label}
         </span>
         {expanded && (
@@ -49,7 +49,7 @@ export const SidebarSubmenu: React.FC<SidebarSubmenuProps> = ({
             <button
               key={index}
               onClick={item.onClick}
-              className="flex items-center gap-2 p-2 hover:text-[#eb6e34] text-[#fff]"
+              className="flex items-center gap-2 p-2 text-[#000] hover:text-[#000]"
             >
               {item.icon}
               <span>{item.label}</span>

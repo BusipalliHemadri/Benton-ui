@@ -22,16 +22,16 @@ const StatsSection: React.FC<StatsSectionProps> = ({
   const vacantCount = properties.filter(p => (p.status === 'vacant' && p.buildingId == propertyId)).length;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-6">
 
       <StatsCard
-        title="Total Rooms"
+        title="All Rooms"
         count={totalCount}
         isActive={activeFilter === 'all'}
         onClick={() => onFilterChange('all')}
         color="bg-card"
-        icon={<Home size={20} className="text-[#eb6e34] mt-[35px]" />}
-        countColor="text-[#ffc013]"
+        icon={<Home size={20} className="text-[#000] mt-[35px]" />}
+        countColor="text-[#000]"
       />
       <StatsCard
         title="Occupied Rooms"
@@ -39,8 +39,8 @@ const StatsSection: React.FC<StatsSectionProps> = ({
         isActive={activeFilter === 'occupied'}
         onClick={() => onFilterChange('occupied')}
         color="bg-green-600"
-        icon={<UserCheck size={20} className="text-[#eb6e34] mt-[35px]" />}
-        countColor="text-[#ffc013]"
+        icon={<UserCheck size={20} className="text-[#000] mt-[35px]" />}
+        countColor="text-[#000]"
       />
       <StatsCard
         title="Vacant Rooms"
@@ -48,10 +48,10 @@ const StatsSection: React.FC<StatsSectionProps> = ({
         isActive={activeFilter === 'vacant'}
         onClick={() => onFilterChange('vacant')}
         color="bg-red-600"
-        icon={<UserX size={20} className="text-[#eb6e34] mt-[35px]" />}
-        countColor="text-[#ffc013]"
+        icon={<UserX size={20} className="text-[#000] mt-[35px]" />}
+        countColor="text-[#000]"
       />
-      <AddPropertyDialog />
+      {/* <AddPropertyDialog /> */}
     </div>
   );
 };

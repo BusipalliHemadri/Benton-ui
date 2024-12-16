@@ -4,5 +4,6 @@ export interface Flat {
   rentAmount: number;
   status: 'occupied' | 'vacant';
   buildingId: number;
+  leaseEnd:string;
   // tenant: string | null;
 }
