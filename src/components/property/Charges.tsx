@@ -47,14 +47,14 @@ const Charges: React.FC = () => {
                 <h2 className="text-2xl font-semibold">Charges</h2>
                 <div className="flex space-x-4">
                     <button
-                        className={`px-4 py-2 rounded ${showOnlyRent ? 'bg-[#f3f4f6] text-gray-700' : 'bg-blue-600 text-white'
+                        className={`px-4 py-2 rounded ${showOnlyRent ? 'bg-[#f3f4f6] text-gray-700' : 'bg-[#2eaef0] text-white'
                             }`}
                         onClick={() => setShowOnlyRent(false)}
                     >
                         Show All Charges
                     </button>
                     <button
-                        className={`px-4 py-2 rounded ${showOnlyRent ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'
+                        className={`px-4 py-2 rounded ${showOnlyRent ? 'bg-[#2eaef0] text-white' : 'bg-gray-200 text-gray-700'
                             }`}
                         onClick={() => setShowOnlyRent(true)}
                     >
@@ -137,7 +137,7 @@ const Charges: React.FC = () => {
                 </div>
                 <button
                     onClick={handleAddCharge}
-                    className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    className="mt-4 bg-[#2eaef0] text-white px-4 py-2 rounded hover:bg-[#2eaef0]"
                 >
                     Add Charge
                 </button>

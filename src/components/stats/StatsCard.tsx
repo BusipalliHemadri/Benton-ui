@@ -25,7 +25,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           : 'text-black'
       }`}
       style={{
-        backgroundColor: isActive ? '#87CEEB' : '#D3D3D3',
+        backgroundColor: isActive ? '#2eaef0' : '#D3D3D3',
       }}
       onClick={onClick}
     >
