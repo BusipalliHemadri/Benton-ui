@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import Overview from './Overview';
 import Charges from './Charges';
-import { Breadcrumbs } from '../breadCrumbs';
-// import Overview from './Overview';
-// import Charges from './Charges';
 
 export const UnitDetails: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'overview' | 'charges'>('overview');
@@ -11,11 +8,6 @@ export const UnitDetails: React.FC = () => {
     return (
 
         <div className="bg-gray-50 min-h-screen p-5">
-            <div className="flex items-center gap-4">
-                <h2 className="text-sm text-white">
-                    <Breadcrumbs />
-                </h2>
-            </div>
             <div className="bg-[#2eaef0] rounded-t-lg text-white p-6 flex items-center">
                 <img
                     src="https://via.placeholder.com/80"
