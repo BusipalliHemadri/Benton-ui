@@ -7,23 +7,25 @@ import { AddPropertyDialog } from '../forms/AddPropertyDialog';
 interface StatsSectionProps {
   properties: Property[];
   activeFilter: PropertyStatus;
+  propertyId: number;
   onFilterChange: (filter: PropertyStatus) => void;
 }
 
 const StatsSection: React.FC<StatsSectionProps> = ({
   properties,
   activeFilter,
+  propertyId,
   onFilterChange,
 }) => {
-  const totalCount = properties.length;
-  const occupiedCount = properties.filter(p => p.status === 'occupied').length;
-  const vacantCount = properties.filter(p => p.status === 'vacant').length;
+  const totalCount = properties.filter(p => p.buildingId == propertyId).length;
+  const occupiedCount = properties.filter(p => (p.status === 'occupied' && p.buildingId == propertyId)).length;
+  const vacantCount = properties.filter(p => (p.status === 'vacant' && p.buildingId == propertyId)).length;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
 
       <StatsCard
-        title="Total Properties"
+        title="Total Rooms"
         count={totalCount}
         isActive={activeFilter === 'all'}
         onClick={() => onFilterChange('all')}
@@ -32,7 +34,7 @@ const StatsSection: React.FC<StatsSectionProps> = ({
         countColor="text-[#ffc013]"
       />
       <StatsCard
-        title="Occupied Properties"
+        title="Occupied Rooms"
         count={occupiedCount}
         isActive={activeFilter === 'occupied'}
         onClick={() => onFilterChange('occupied')}
@@ -41,7 +43,7 @@ const StatsSection: React.FC<StatsSectionProps> = ({
         countColor="text-[#ffc013]"
       />
       <StatsCard
-        title="Vacant Properties"
+        title="Vacant Rooms"
         count={vacantCount}
         isActive={activeFilter === 'vacant'}
         onClick={() => onFilterChange('vacant')}

@@ -2,6 +2,7 @@ export interface Property {
   id: number;
   name:string;
   phone:string;
+  buildingId:number;
   address: string;
   status: 'occupied' | 'vacant';
 }

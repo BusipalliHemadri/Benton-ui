@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, act } from 'react';
 import { useParams } from 'react-router-dom';
 import DataGrid, {
   Column,
@@ -23,6 +23,8 @@ import 'devextreme/dist/css/dx.light.css';
 import { usePropertyStore } from '../../store/propertyStore';
 import { TABLE_PAGE_SIZES } from '../../config/constants';
 import { Breadcrumbs } from '../breadCrumbs';
+import StatsSection from '../stats/StatsSection';
+import { PropertyStatus } from '../../types/property';
 // import { Breadcrumbs } from '../breadcrumbs';
 
 export const PropertyDetails: React.FC = () => {
@@ -31,7 +33,12 @@ export const PropertyDetails: React.FC = () => {
   const dataGridRef = useRef(null);
 
   const [isWindowSizeSmall, setIsWindowSizeSmall] = useState(false);
-  const property = mockFlats.find((data) => data.buildingId === Number(id)) || null;
+  // const property = mockFlats.find((data) => data.buildingId === Number(id)) || null;
+  const [activeFilter, setActiveFilter] = React.useState<PropertyStatus>('all');
+
+
+  console.log(activeFilter)
+
 
   useEffect(() => {
     const checkWindowSize = () => {
@@ -55,7 +62,7 @@ export const PropertyDetails: React.FC = () => {
 
       worksheet.columns = [
         { header: 'Room Number', key: 'roomNumber', width: 15 },
-        { header: 'Rent Per Week', key: 'rentAmount', width: 15 },
+        { header: 'Weekly Rent', key: 'rentAmount', width: 15 },
         { header: 'Status', key: 'status', width: 15 },
       ];
 
@@ -71,7 +78,7 @@ export const PropertyDetails: React.FC = () => {
       doc.text('Property Details', 14, 16);
 
       doc.autoTable({
-        head: [['Room Number', 'Rent Per Week', 'Status']],
+        head: [['Room Number', 'Weekly Rent', 'Status']],
         body: dataSource.map((row) => [
           row.roomNumber,
           row.rentAmount,
@@ -100,10 +107,17 @@ export const PropertyDetails: React.FC = () => {
         {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
       </h2>
 
+      <StatsSection
+        propertyId={id}
+        properties={mockFlats}
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+      />
+
       <div className="bg-card p-6 rounded-lg shadow-lg overflow-hidden">
         <DataGrid
           ref={dataGridRef}
-          dataSource={mockFlats.filter((data) => data.buildingId === Number(id))}
+          dataSource={ activeFilter=== 'all' ? mockFlats.filter((data) => ( data.buildingId === Number(id))):  mockFlats.filter((data) => ( data.buildingId === Number(id)&& data.status === activeFilter))}
           showBorders={true}
           columnAutoWidth={true}
           rowAlternationEnabled={true}
@@ -164,7 +178,7 @@ export const PropertyDetails: React.FC = () => {
           />
           <Column
             dataField="rentAmount"
-            caption="Rent Per Week"
+            caption="Weekly Rent"
             minWidth={100}
             cellRender={MoneyCell}
             alignment="center"

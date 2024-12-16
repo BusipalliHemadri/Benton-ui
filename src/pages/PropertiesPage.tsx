@@ -16,11 +16,11 @@ export const PropertiesPage: React.FC = () => {
           <Breadcrumbs />
         </h2>
       </div>
-      <StatsSection
+      {/* <StatsSection
         properties={properties}
         activeFilter={activeFilter}
         onFilterChange={setActiveFilter}
-      />
+      /> */}
 
       <PropertyTable
         data={properties}
