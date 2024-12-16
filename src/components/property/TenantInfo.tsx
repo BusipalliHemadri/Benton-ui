@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import Overview from './Overview';
 import Charges from './Charges';
+import { properties } from '../../data/properties';
+import { useParams } from 'react-router-dom';
 
 export const UnitDetails: React.FC = () => {
+    const { id } = useParams();
+
     const [activeTab, setActiveTab] = useState<'overview' | 'charges'>('overview');
 
     return (
 
-        <div className="bg-gray-50 min-h-screen p-5">
+        <div className="min-h-screen p-5">
             <div className="bg-[#2eaef0] rounded-t-lg text-white p-6 flex items-center">
                 <img
                     src="https://via.placeholder.com/80"
                     alt="Property"
                     className="rounded-full w-20 h-20 mr-4"
                 />
-                <div>
-                    <h1 className="text-2xl font-bold">Miami Hotel, Main</h1>
-                    {/* <p>4 beds | 1 bath | 0 sqft | Unlisted | Shareable Unit Code: PWN-868</p>
-                    <p className="mt-1 underline cursor-pointer">Copy Link to Apply</p> */}
-                </div>
+                <h2 className="text-xl text-white font-bold">
+                    {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
+                </h2>
                 <div className="ml-auto">
                     <button className="bg-white text-[#2eaef0] px-4 py-2 rounded hover:bg-gray-200">
                         Edit Unit Info

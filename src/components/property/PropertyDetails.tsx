@@ -41,10 +41,7 @@ export const PropertyDetails: React.FC = () => {
 
   console.log(activeFilter)
   const handleRowClick = (e) => {
-    const selectedRoomId = e.data.roomId; // Adjust this to match your data key
-    // history.push(`/property/${id}/unit/${selectedRoomId}`);
-    // navigate(`/property/${e.data.id}`);
-
+    const selectedRoomId = e.data.roomId; 
     navigate(`/property/${id}/unit/${selectedRoomId}`)
   };
 
