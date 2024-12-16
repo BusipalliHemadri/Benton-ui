@@ -3,16 +3,17 @@ import React, { useState } from 'react';
 interface Charge {
     type: string;
     amount: number;
-    date: string;
+    fromDate: string;
+    toDate: string;
     status: 'Paid' | 'Overdue';
 }
 
 const Charges: React.FC = () => {
     const [charges, setCharges] = useState<Charge[]>([
-        { type: 'Rent', amount: 750, date: '2024-06-01', status: 'Paid' },
-        { type: 'Utilities', amount: 150, date: '2024-06-02', status: 'Overdue' },
-        { type: 'Rent', amount: 750, date: '2024-05-01', status: 'Paid' },
-        { type: 'Rent', amount: 750, date: '2024-04-01', status: 'Overdue' },
+        { type: 'Rent', amount: 750, fromDate: '2024-05-01', toDate: '2024-06-01', status: 'Paid' },
+        { type: 'Utilities', amount: 150, fromDate: '2024-05-05', toDate: '2024-06-05', status: 'Overdue' },
+        { type: 'Rent', amount: 750, fromDate: '2024-04-01', toDate: '2024-05-01', status: 'Paid' },
+        { type: 'Rent', amount: 750, fromDate: '2024-03-01', toDate: '2024-04-01', status: 'Overdue' },
     ]);
 
     const [showOnlyRent, setShowOnlyRent] = useState(false);
@@ -25,7 +26,8 @@ const Charges: React.FC = () => {
     const [newCharge, setNewCharge] = useState({
         type: '',
         amount: '',
-        date: '',
+        fromDate: '',
+        toDate: '',
         status: 'Paid',
     });
 
@@ -33,11 +35,12 @@ const Charges: React.FC = () => {
         const charge: Charge = {
             type: newCharge.type,
             amount: parseFloat(newCharge.amount),
-            date: newCharge.date,
+            fromDate: newCharge.fromDate,
+            toDate: newCharge.toDate,
             status: newCharge.status as 'Paid' | 'Overdue',
         };
         setCharges([...charges, charge]);
-        setNewCharge({ type: '', amount: '', date: '', status: 'Paid' });
+        setNewCharge({ type: '', amount: '', fromDate: '', toDate: '', status: 'Paid' });
     };
 
     return (
@@ -76,7 +79,8 @@ const Charges: React.FC = () => {
                 {filteredCharges.map((charge, index) => (
                     <div key={index} className="bg-white border rounded-lg p-4 shadow">
                         <h3 className="font-semibold text-gray-700">{charge.type}</h3>
-                        <p className="text-sm text-gray-500">{`Due Date: ${charge.date}`}</p>
+                        <p className="text-sm text-gray-500">{`From: ${charge.fromDate}`}</p>
+                        <p className="text-sm text-gray-500">{`To: ${charge.toDate}`}</p>
                         <p className="mt-2">
                             Amount: <span className="font-medium">${charge.amount.toFixed(2)}</span>
                         </p>
@@ -93,7 +97,7 @@ const Charges: React.FC = () => {
             {/* Add New Charge Form */}
             <div className="mt-8 bg-gray-100 p-6 rounded-lg shadow">
                 <h3 className="text-lg font-semibold mb-4">Add New Charge</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                     <div>
                         <label className="block text-gray-700">Charge Type</label>
                         <input
@@ -115,12 +119,21 @@ const Charges: React.FC = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-gray-700">Due Date</label>
+                        <label className="block text-gray-700">From Date</label>
                         <input
                             type="date"
                             className="w-full border rounded px-3 py-2"
-                            value={newCharge.date}
-                            onChange={(e) => setNewCharge({ ...newCharge, date: e.target.value })}
+                            value={newCharge.fromDate}
+                            onChange={(e) => setNewCharge({ ...newCharge, fromDate: e.target.value })}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-gray-700">To Date</label>
+                        <input
+                            type="date"
+                            className="w-full border rounded px-3 py-2"
+                            value={newCharge.toDate}
+                            onChange={(e) => setNewCharge({ ...newCharge, toDate: e.target.value })}
                         />
                     </div>
                     <div>
@@ -137,7 +150,7 @@ const Charges: React.FC = () => {
                 </div>
                 <button
                     onClick={handleAddCharge}
-                    className="mt-4 bg-[#2eaef0] text-white px-4 py-2 rounded hover:bg-[#2eaef0]"
+                    className="mt-4 bg-[#2eaef0] text-white px-4 py-2 rounded hover:bg-[#1e9dd9]"
                 >
                     Add Charge
                 </button>
