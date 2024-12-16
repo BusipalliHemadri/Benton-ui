@@ -20,18 +20,12 @@ const Charges: React.FC = () => {
   const [filterType, setFilterType] = useState("all");
   const [showCurrentLease, setShowCurrentLease] = useState(false);
 
-  // Filtered Data Logic
   const filteredCharges = charges.filter((charge) => {
-    // Check date range
     const fromDateValid =
       !dateRange.from || new Date(charge.fromDate) >= new Date(dateRange.from);
     const toDateValid =
       !dateRange.to || new Date(charge.toDate) <= new Date(dateRange.to);
-
-    // Check type filter
     const typeFilter = filterType === "all" || charge.type === "Rent";
-
-    // For current lease checkbox logic (Placeholder for demo)
     const leaseFilter = showCurrentLease ? charge.type === "Rent" : true;
 
     return fromDateValid && toDateValid && typeFilter && leaseFilter;
@@ -39,15 +33,10 @@ const Charges: React.FC = () => {
 
   return (
     <div className="w-full p-4">
-      {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-semibold">Charges</h2>
-        <span className="px-2 py-1 bg-gray-100 border rounded text-sm font-medium">
-          DUE (+30 DAYS): <span className="text-black">$4500.00</span>
-        </span>
       </div>
 
-      {/* Filters UI */}
       <div className="flex items-center space-x-4 mb-6">
         <div className="flex items-center space-x-2">
           <label>From</label>
@@ -69,18 +58,17 @@ const Charges: React.FC = () => {
             onChange={(e) => setDateRange({ ...dateRange, to: e.target.value })}
           />
         </div>
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={showCurrentLease}
-            onChange={() => setShowCurrentLease(!showCurrentLease)}
-            className="cursor-pointer"
-          />
-          <label>Only show charges for the current lease</label>
-        </div>
       </div>
 
-      {/* Radio Buttons for Filter Type */}
+      <div className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={showCurrentLease}
+          onChange={() => setShowCurrentLease(!showCurrentLease)}
+          className="cursor-pointer"
+        />
+        <label>Only show charges for the current lease</label>
+      </div>
       <div className="flex items-center space-x-4 mb-6">
         <div className="flex items-center space-x-2">
           <input
@@ -103,8 +91,6 @@ const Charges: React.FC = () => {
           <label>Show Only Rent Charges</label>
         </div>
       </div>
-
-      {/* Charges Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
         {filteredCharges.length > 0 ? (
           filteredCharges.map((charge, index) => (
@@ -116,9 +102,8 @@ const Charges: React.FC = () => {
                 Amount: <span className="font-medium">${charge.amount.toFixed(2)}</span>
               </p>
               <p
-                className={`mt-1 font-medium ${
-                  charge.status === "Paid" ? "text-green-500" : "text-red-500"
-                }`}
+                className={`mt-1 font-medium ${charge.status === "Paid" ? "text-green-500" : "text-red-500"
+                  }`}
               >
                 {charge.status}
               </p>

@@ -30,9 +30,9 @@ export function LoginForm({
         const password = formData.get('password')?.toString();
 
         if (username === "admin" && password === "admin") {
-            setError(null); 
-            onLogin(); 
-            navigate("/properties"); 
+            setError(null);
+            onLogin();
+            navigate("/properties");
         } else {
             setError("Invalid username or password. Please try again.");
         }

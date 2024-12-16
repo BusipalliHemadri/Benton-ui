@@ -4,7 +4,8 @@ import { cn } from '../../lib/utils';
 import {
   LayoutDashboard,
   Building2,
-  PlusCircle} from 'lucide-react';
+  PlusCircle
+} from 'lucide-react';
 import { SidebarNavItem } from './sidebar/SidebarNavItem';
 import { SidebarSubmenu } from './sidebar/SidebarSubmenu';
 import { BiLink } from "react-icons/bi";
