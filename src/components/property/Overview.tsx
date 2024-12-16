@@ -27,18 +27,6 @@ const Overview: React.FC = () => {
         </button>
       </div>
 
-      {/* Unit Unlisted */}
-      <div className="bg-white border rounded-lg p-4 shadow col-span-1 md:col-span-2">
-        <h2 className="text-lg font-semibold mb-3">Unit Unlisted</h2>
-        <p>Get your listing in front of 10 million more tenants!</p>
-        <div className="flex items-center my-3">
-          <img src="https://via.placeholder.com/120x40" alt="Partners" />
-        </div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Create Listing
-        </button>
-      </div>
-
       {/* Tenants */}
       <div className="bg-white border rounded-lg p-4 shadow">
         <h2 className="text-lg font-semibold mb-3">Tenants</h2>
