@@ -40,7 +40,7 @@ export const PropertyDetails: React.FC = () => {
 
   console.log(activeFilter)
   const handleRowClick = (e) => {
-    const selectedRoomId = e.data.roomId; 
+    const selectedRoomId = e.data.roomId;
     navigate(`/property/${id}/unit/${selectedRoomId}`)
   };
 
@@ -67,8 +67,10 @@ export const PropertyDetails: React.FC = () => {
       worksheet.columns = [
         { header: 'Room Number', key: 'roomNumber', width: 15 },
         { header: 'Weekly Rent', key: 'rentAmount', width: 15 },
-        { header: 'Lease End', key: 'leaseEnd', width: 15 },
         { header: 'Status', key: 'status', width: 15 },
+        { header: 'Lease Start', key: 'leaseStart', width: 15 },
+        { header: 'Lease End', key: 'leaseEnd', width: 15 },
+
       ];
 
       dataSource.forEach((row) => {
@@ -76,14 +78,14 @@ export const PropertyDetails: React.FC = () => {
       });
 
       workbook.xlsx.writeBuffer().then((buffer) => {
-        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), allData ? 'AllData_PropertyDetails.xlsx' : 'CurrentPage_PropertyDetails.xlsx');
+        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), allData ? 'PropertyDetails.xlsx' : 'CurrentPage_PropertyDetails.xlsx');
       });
     } else if (type === 'pdf') {
       const doc = new jsPDF({ orientation: 'landscape' });
       doc.text('Property Details', 14, 16);
 
       doc.autoTable({
-        head: [['Room Number', 'Weekly Rent', 'Status', 'Lease End']],
+        head: [['Room Number', 'Weekly Rent', 'Status', 'Lease Start', 'Lease End']],
         body: dataSource.map((row) => [
           row.roomNumber,
           row.rentAmount,
@@ -94,7 +96,7 @@ export const PropertyDetails: React.FC = () => {
         margin: { top: 20 },
       });
 
-      doc.save(allData ? 'AllData_PropertyDetails.pdf' : 'CurrentPage_PropertyDetails.pdf');
+      doc.save(allData ? 'PropertyDetails.pdf' : 'CurrentPage_PropertyDetails.pdf');
     }
   };
 
