@@ -202,6 +202,11 @@ export const PropertyDetails: React.FC = () => {
             alignment="left"
           />
           <Column
+            dataField="leaseStart"
+            caption="Lease Start"
+            alignment="left"
+          />
+          <Column
             dataField="leaseEnd"
             caption="Lease End"
             alignment="left"

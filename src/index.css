@@ -429,6 +429,7 @@ body {
   color: #000;
 }
 
+
 .dx-datagrid-rowsview .dx-row-focused.dx-data-row:not(.dx-row-lines) > td {
   border-top: 1px solid #303030;
 }
@@ -441,13 +442,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* .dx-widget input,
-.dx-widget textarea {
-  font-family: none !;
-} */
 
-.dx-widget input {
-  line-height: 1.35715;
+.dx-widget input, .dx-widget textarea{
+  font-family: "Poppins", sans-serif;
+
 }
 
 .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table .dx-col-fixed {

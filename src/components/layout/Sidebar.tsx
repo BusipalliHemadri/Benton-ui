@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { SidebarNavItem } from './sidebar/SidebarNavItem';
 import { SidebarSubmenu } from './sidebar/SidebarSubmenu';
-import { BiLink } from "react-icons/bi";
 
 export interface SidebarProps {
   className?: string;
@@ -23,7 +22,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     <div
       className={cn(
         "h-screen  left-0 top-0 z-40 flex flex-col transition-all duration-300  shadow-sm bg-card",
-        expanded ? "w-64" : "w-16",
+        expanded ? "w-60" : "w-16",
         className
       )}
       onMouseEnter={() => setExpanded(true)}
