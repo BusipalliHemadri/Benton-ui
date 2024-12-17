@@ -18,7 +18,7 @@ export const UnitDetails: React.FC = () => {
                     alt="Property"
                     className="rounded-full w-20 h-20 mr-4"
                 />
-                <h2 className="text-xl text-white font-bold">
+                <h2 className="text-xl text-white">
                     {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
                 </h2>
                 <div className="ml-auto">

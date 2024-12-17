@@ -20,7 +20,7 @@ const PropertyList: React.FC<PropertyListProps> = ({ properties, filterStatus })
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Property Details</h2>
+      <h2 className="text-2xl mb-4">Property Details</h2>
       <div className="grid gap-4">
         {filteredProperties.map((property) => (
           <div

@@ -32,12 +32,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         setShowPropertySubmenu(false);
       }}
     >
-      <div className="p-4 flex items-center justify-between  text-[#000]">
+      {/* <div className="p-4 flex items-center justify-between  text-[#000]">
         <span className={cn("overflow-hidden transition-all", expanded ? "w-32" : "w-0")}>
           Mackeco Properties
         </span>
         <BiLink className="w-10 h-10 text-[#ffc013]" />
-      </div>
+      </div> */}
 
       <nav className="flex items-center flex-col gap-2 p-4">
         <SidebarNavItem

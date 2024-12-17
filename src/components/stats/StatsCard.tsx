@@ -21,7 +21,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
     <div
       className={`flex flex-col items-center m-[1px_10px] p-[5px_0] rounded-lg border-none shadow-none transition-all duration-400 ease-in-out cursor-pointer transform hover:scale-105 ${
         isActive
-          ? 'ring-2  scale-105 font-bold tx text-white'
+          ? 'ring-2  scale-105  tx text-white'
           : 'text-black'
       }`}
       style={{
@@ -32,9 +32,9 @@ const StatsCard: React.FC<StatsCardProps> = ({
       <div className="flex items-center justify-between w-full px-4">
         <div>
           <div className="text-xl mb-2">{title}</div>
-          <div className={`text-xl font-semibold ${countColor}`}>{count}</div>
+          <div className={`text-xl  ${countColor}`}>{count}</div>
         </div>
-        <div>{icon}</div>
+        <div >{icon}</div>
       </div>
     </div>
   );

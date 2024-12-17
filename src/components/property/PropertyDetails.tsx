@@ -113,7 +113,7 @@ export const PropertyDetails: React.FC = () => {
         </h5>
       </div>
 
-      <h2 className="text-xl text-black font-bold">
+      <h2 className="text-xl text-black">
         {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
       </h2>
 

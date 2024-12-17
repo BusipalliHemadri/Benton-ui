@@ -1,5 +1,5 @@
 export interface Flat {
-  roomId: number;
+  // roomId: number;
   // id: number;
   roomNumber:string;
   rentAmount: number;
