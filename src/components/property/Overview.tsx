@@ -12,11 +12,11 @@ const Overview: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-sm text-gray-500">
                     <p>Lease Start</p>
-                    <span>08/01/2024</span>
+                    <span>12/17/2024</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-500">
                     <p>Lease End</p>
-                    <span>07/31/2025</span>
+                    <span>12/24/2024</span>
                 </div>
                 <button className="mt-4 bg-[#2eaef0] text-sm text-white px-3 py-1 rounded hover:bg-[#1c8bce]">
                     Delete Lease

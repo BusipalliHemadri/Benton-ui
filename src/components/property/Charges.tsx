@@ -10,7 +10,6 @@ interface Charge {
   status: "Paid" | "Overdue";
 }
 
-// Utility function to format dates as MM/DD/YYYY
 const formatDate = (date: string | Date | null | undefined): string => {
   if (!date) return "";
   const d = new Date(date);
@@ -22,10 +21,10 @@ const formatDate = (date: string | Date | null | undefined): string => {
 
 const Charges: React.FC = () => {
   const [charges] = useState<Charge[]>([
-    { type: "Rent", amount: 1000, fromDate: "2024-05-01", toDate: "2024-06-01", status: "Overdue" },
-    { type: "Utilities", amount: 150, fromDate: "2024-05-01", toDate: "2024-06-01", status: "Overdue" },
-    { type: "Rent", amount: 800, fromDate: "2024-04-01", toDate: "2024-05-01", status: "Paid" },
-    { type: "Rent", amount: 750, fromDate: "2024-03-01", toDate: "2024-04-01", status: "Paid" },
+    { type: "Rent", amount: 225, fromDate: "2024-12-17", toDate: "2024-12-24", status: "Overdue" },
+    { type: "Utilities", amount: 150, fromDate: "2024-12-17", toDate: "2024-12-24", status: "Overdue" },
+    { type: "Rent", amount: 250, fromDate: "2024-12-03", toDate: "2024-12-10", status: "Paid" },
+    { type: "Rent", amount: 190, fromDate: "2024-11-26", toDate: "2024-12-03", status: "Paid" },
   ]);
 
   const [dateRange, setDateRange] = useState<{ from: Date | null; to: Date | null }>({
