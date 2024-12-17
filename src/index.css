@@ -81,7 +81,7 @@ body {
 }
 
 /* General DataGrid styles */
-.dx-datagrid {
+.dx-datagrid .dx-widget {
   background-color: #fff; /* Dark background */
   color: #000; /* White text */
   border: none;
@@ -327,7 +327,20 @@ body {
 }
 
 .dx-popup-wrapper .dx-state-focused.dx-overlay-content {
-  border: 1px solid #000;
+  border: 1px solid #2eaef0;
+}
+.dx-datagrid-column-chooser
+  .dx-overlay-content
+  .dx-popup-content
+  .dx-column-chooser-item {
+  margin-bottom: 10px;
+  background-color: #2eaef0;
+  color: #fff;
+  font-weight: 400;
+  border: 1px solid #2eaef0;
+  border-radius: 10px;
+  padding: 7px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2);
 }
 
 .dx-popup-wrapper > .dx-overlay-content {
@@ -424,7 +437,6 @@ body {
   background: transparent;
 }
 .dx-widget {
-  /* font-weight: 400; */
   font-size: 14px;
   font-family: "Poppins", sans-serif;
 }
@@ -434,8 +446,7 @@ body {
   font-family: none !;
 } */
 
-
-.dx-widget input{
+.dx-widget input {
   line-height: 1.35715;
 }
 

@@ -77,7 +77,7 @@ const PropertyTable: React.FC<PropertyTableProps> = ({ data, filterStatus }) => 
         <Selection mode='single' />
         <ColumnChooser enabled={true} />
         <ColumnFixing enabled={true} />
-        <SearchPanel width={240} visible={true} placeholder="Search..." />
+        <SearchPanel width={240} visible={true} />
         <Column
           dataField="id"
           caption="ID"
