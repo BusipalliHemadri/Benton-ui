@@ -9,8 +9,8 @@ const Logout: React.FC<LogoutProps> = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setIsAuthenticated(false); // Update authentication state
-    navigate('/'); // Redirect to login page
+    setIsAuthenticated(false);
+    navigate('/'); 
   };
 
   return (

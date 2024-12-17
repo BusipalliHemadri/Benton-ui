@@ -9,19 +9,19 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ setIsAuthenticated }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleToggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const handleNavigateToProfile = () => {
-    setIsDropdownOpen(false);
-    navigate('/profile'); // Navigate to profile page
-  };
+  // const handleNavigateToProfile = () => {
+  //   setIsDropdownOpen(false);
+  //   navigate('/profile'); 
+  // };
 
-  const handleNavigateToSettings = () => {
-    setIsDropdownOpen(false);
-    navigate('/settings'); // Navigate to settings page
-  };
+  // const handleNavigateToSettings = () => {
+  //   setIsDropdownOpen(false);
+  //   navigate('/settings'); 
+  // };
 
   return (
     <header className="bg-[#fff] text-black top-0 w-full shadow-md z-10">
@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ setIsAuthenticated }) => {
             <div className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-md">
               {/* Profile Button */}
               <button
-                onClick={handleNavigateToProfile}
+                // onClick={handleNavigateToProfile}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
               >
                 Profile

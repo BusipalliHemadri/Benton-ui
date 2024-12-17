@@ -22,7 +22,7 @@ export const UnitDetails: React.FC = () => {
                     {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
                 </h2>
                 <div className="ml-auto">
-                    <button className="bg-white text-[#2eaef0] px-4 py-2 rounded hover:bg-gray-200">
+                    <button className="bg-white text-[#2eaef0] text-sm px-4 py-2 rounded hover:bg-gray-200">
                         Edit Unit Info
                     </button>
                 </div>

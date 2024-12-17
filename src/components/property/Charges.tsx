@@ -20,9 +20,9 @@ const formatDate = (date: string | undefined): string => {
 
 const Charges: React.FC = () => {
   const [charges] = useState<Charge[]>([
-    { type: "Rent", amount: 750, fromDate: "2024-05-01", toDate: "2024-06-01", status: "Overdue" },
+    { type: "Rent", amount: 1000, fromDate: "2024-05-01", toDate: "2024-06-01", status: "Overdue" },
     { type: "Utilities", amount: 150, fromDate: "2024-05-01", toDate: "2024-06-01", status: "Overdue" },
-    { type: "Rent", amount: 750, fromDate: "2024-04-01", toDate: "2024-05-01", status: "Paid" },
+    { type: "Rent", amount: 800, fromDate: "2024-04-01", toDate: "2024-05-01", status: "Paid" },
     { type: "Rent", amount: 750, fromDate: "2024-03-01", toDate: "2024-04-01", status: "Paid" },
   ]);
 
@@ -142,7 +142,7 @@ const Charges: React.FC = () => {
               </div>
 
               <p className="mt-2">
-                Amount<span className="text-sm">${charge.amount.toFixed(2)}</span>
+                Amount : <span className="text-sm">${charge.amount.toFixed(2)}</span>
               </p>
 
               <p

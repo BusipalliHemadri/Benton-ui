@@ -303,10 +303,10 @@ body {
 
 .dx-pager .dx-page-sizes .dx-selection,
 .dx-pager .dx-pages .dx-selection {
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #2eaef0;
+  border: 1px solid #2eaef0;
   border-radius: 10px;
-  color: #000;
+  color: #fff;
 }
 
 .dx-pager .dx-page-sizes .dx-page-size {
@@ -315,7 +315,7 @@ body {
 
 .dx-pager .dx-pages .dx-next-button,
 .dx-pager .dx-pages .dx-prev-button {
-  color: #000;
+  color: #2eaef0;
   font-size: 21px;
   line-height: 21px;
   position: relative;
@@ -423,6 +423,21 @@ body {
   color: #000;
   background: transparent;
 }
+.dx-widget {
+  /* font-weight: 400; */
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* .dx-widget input,
+.dx-widget textarea {
+  font-family: none !;
+} */
+
+
+.dx-widget input{
+  line-height: 1.35715;
+}
 
 .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table .dx-col-fixed {
   background: transparent;
@@ -438,14 +453,14 @@ body {
   display: none;
 }
 
-.dx-pager .dx-pages .dx-next-button,
+/* .dx-pager .dx-pages .dx-next-button,
 .dx-pager .dx-pages .dx-prev-button {
   position: relative;
   font-size: 21px;
   text-align: center;
   line-height: 21px;
   color: #000;
-}
+} */
 
 .dx-texteditor.dx-editor-outlined {
   background: #fff;

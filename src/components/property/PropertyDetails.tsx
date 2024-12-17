@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, act } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import DataGrid, {
   Column,
@@ -25,7 +25,6 @@ import { TABLE_PAGE_SIZES } from '../../config/constants';
 import { Breadcrumbs } from '../breadCrumbs';
 import StatsSection from '../stats/StatsSection';
 import { PropertyStatus } from '../../types/property';
-// import { Breadcrumbs } from '../breadcrumbs';
 
 export const PropertyDetails: React.FC = () => {
   const { id } = useParams();
@@ -84,7 +83,7 @@ export const PropertyDetails: React.FC = () => {
       doc.text('Property Details', 14, 16);
 
       doc.autoTable({
-        head: [['Room Number', 'Weekly Rent', 'Status']],
+        head: [['Room Number', 'Weekly Rent', 'Status', 'Lease End']],
         body: dataSource.map((row) => [
           row.roomNumber,
           row.rentAmount,
@@ -181,7 +180,7 @@ export const PropertyDetails: React.FC = () => {
           <Selection mode="single" />
           <ColumnChooser enabled={true} />
           <ColumnFixing enabled={true} />
-          <SearchPanel width={240} visible={true} placeholder="Search..." />
+          <SearchPanel width={240} visible={true} placeholder="Search" />
           <Column
             dataField="roomNumber"
             caption="Room Number"

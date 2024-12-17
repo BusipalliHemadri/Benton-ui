@@ -48,8 +48,8 @@ export function LoginForm({
         >
             <Card className="w-full max-w-sm shadow-lg bg-white border-gray-300 rounded-lg">
                 <CardHeader className="flex justify-center mb-4">
-                    <CardTitle className="text-2xl text-gray-800 text-center">
-                        Log in to your account
+                    <CardTitle className="text-xl text-gray-800 text-center">
+                        Login
                     </CardTitle>
                 </CardHeader>
 
@@ -117,7 +117,7 @@ export function LoginForm({
                             {/* Login Button */}
                             <Button
                                 type="submit"
-                                className="w-full bg-gray-800 text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-600 focus:outline-none"
+                                className="w-full bg-[#23aef0] text-white hover:bg-[#2eaefo] focus:ring-2 focus:ring-gray-600 focus:outline-none"
                             >
                                 Login
                             </Button>
