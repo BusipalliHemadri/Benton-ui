@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface Charge {
   type: string;
@@ -8,14 +10,14 @@ interface Charge {
   status: "Paid" | "Overdue";
 }
 
-// Utility function to format dates to MM-DD-YYYY
-const formatDate = (date: string | undefined): string => {
+// Utility function to format dates as MM/DD/YYYY
+const formatDate = (date: string | Date | null | undefined): string => {
   if (!date) return "";
   const d = new Date(date);
   const month = (d.getMonth() + 1).toString().padStart(2, "0");
   const day = d.getDate().toString().padStart(2, "0");
   const year = d.getFullYear();
-  return `${month}-${day}-${year}`;
+  return `${month}/${day}/${year}`;
 };
 
 const Charges: React.FC = () => {
@@ -26,15 +28,23 @@ const Charges: React.FC = () => {
     { type: "Rent", amount: 750, fromDate: "2024-03-01", toDate: "2024-04-01", status: "Paid" },
   ]);
 
-  const [dateRange, setDateRange] = useState({ from: "", to: "" });
+  const [dateRange, setDateRange] = useState<{ from: Date | null; to: Date | null }>({
+    from: null,
+    to: null,
+  });
+
   const [filterType, setFilterType] = useState("all");
   const [showCurrentLease, setShowCurrentLease] = useState(false);
 
+  const clearDateFilters = () => {
+    setDateRange({ from: null, to: null });
+  };
+
   const filteredCharges = charges.filter((charge) => {
     const fromDateValid =
-      !dateRange.from || new Date(charge.fromDate) >= new Date(dateRange.from);
+      !dateRange.from || new Date(charge.fromDate) >= dateRange.from;
     const toDateValid =
-      !dateRange.to || new Date(charge.toDate) <= new Date(dateRange.to);
+      !dateRange.to || new Date(charge.toDate) <= dateRange.to;
     const typeFilter = filterType === "all" || charge.type === "Rent";
     const leaseFilter = showCurrentLease ? charge.type === "Rent" : true;
 
@@ -50,50 +60,31 @@ const Charges: React.FC = () => {
       <div className="flex items-center space-x-4 mb-6">
         <div className="flex items-center space-x-2">
           <label>From</label>
-          <div className="relative">
-            <input
-              type="text"
-              className="border rounded px-3 py-2"
-              placeholder="MM-DD-YYYY"
-              value={formatDate(dateRange.from)}
-              onChange={(e) =>
-                setDateRange({ ...dateRange, from: e.target.value })
-              }
-            />
-            {dateRange.from && (
-              <button
-                className="absolute right-2 top-2 text-gray-500"
-                onClick={() => setDateRange({ ...dateRange, from: "" })}
-              >
-                ✕
-              </button>
-            )}
-          </div>
+          <DatePicker
+            selected={dateRange.from}
+            onChange={(date) => setDateRange({ ...dateRange, from: date })}
+            dateFormat="MM/dd/yyyy"
+            className="border rounded px-3 py-2"
+            placeholderText="MM/DD/YYYY"
+          />
         </div>
         <div className="flex items-center space-x-2">
           <label>To</label>
-          <div className="relative">
-            <input
-              type="text"
-              className="border rounded px-3 py-2"
-              placeholder="MM-DD-YYYY"
-              value={formatDate(dateRange.to)}
-              onChange={(e) =>
-                setDateRange({ ...dateRange, to: e.target.value })
-              }
-            />
-            {dateRange.to && (
-              <button
-                className="absolute right-2 top-2 text-gray-500"
-                onClick={() => setDateRange({ ...dateRange, to: "" })}
-              >
-                ✕
-              </button>
-            )}
-          </div>
+          <DatePicker
+            selected={dateRange.to}
+            onChange={(date) => setDateRange({ ...dateRange, to: date })}
+            dateFormat="MM/dd/yyyy"
+            className="border rounded px-3 py-2"
+            placeholderText="MM/DD/YYYY"
+          />
         </div>
+        <button
+          onClick={clearDateFilters}
+          className="bg-[#2eaef0] text-white px-4  text-sm py-2 rounded hover:bg-[#2eaef0]"
+        >
+          Clear Dates
+        </button>
       </div>
-
       <div className="flex items-center space-x-2">
         <input
           type="checkbox"
@@ -101,7 +92,9 @@ const Charges: React.FC = () => {
           onChange={() => setShowCurrentLease(!showCurrentLease)}
           className="cursor-pointer"
         />
-        <label className="text-gray-500 text-sm">Only show charges for the current lease</label>
+        <label className="text-gray-500 text-sm">
+          Only show charges for the current lease
+        </label>
       </div>
       <div className="flex items-center space-x-4 mb-6">
         <div className="flex items-center space-x-2">
@@ -142,7 +135,8 @@ const Charges: React.FC = () => {
               </div>
 
               <p className="mt-2">
-                Amount : <span className="text-sm">${charge.amount.toFixed(2)}</span>
+                Amount :{" "}
+                <span className="text-sm">${charge.amount.toFixed(2)}</span>
               </p>
 
               <p
