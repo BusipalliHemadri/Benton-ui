@@ -41,7 +41,7 @@ const Overview: React.FC = () => {
                     <p>Plan</p>
                     <span>Full</span>
                 </div>
-                <button className="mt-4 bg-[#2eaef0] text-sm text-white px-3 py-1 rounded hover:bg-[#1d94d8]">
+                <button className="mt-4 bg-[#2eaef0] text-sm text-white px-3 py-1 rounded hover:bg-[#1c8bce]">
                     Manage Plan
                 </button>
             </div>
@@ -49,7 +49,7 @@ const Overview: React.FC = () => {
             {/* Tenants */}
             <div className="bg-white  border rounded-lg p-4 shadow">
                 <h2 className="text-lg flex justify-between items-center mb-3">Tenants
-                    <button className="bg-[#2eaef0] text-white text-sm px-3 mt-3 py-1 rounded hover:bg-[#1d94d8]">
+                    <button className="bg-[#2eaef0] text-white text-sm px-3 mt-3 py-1 rounded hover:bg-[#1c8bce]">
                         Add New Tenant
                     </button>
                 </h2><span>
@@ -64,7 +64,7 @@ const Overview: React.FC = () => {
             <div className="bg-white border rounded-lg p-4 shadow">
                 <h2 className="text-lg  mb-3">Notes</h2>
                 <p className="text-gray-500 text-sm">No notes available.</p>
-                <button className="mt-3 bg-[#2eaef0] text-white px-3  text-sm py-1 rounded hover:bg-[#1d94d8]">
+                <button className="mt-3 bg-[#2eaef0] text-white px-3  text-sm py-1 rounded hover:bg-[#1c8bce]">
                     Edit
                 </button>
             </div>

@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { SidebarNavItem } from './sidebar/SidebarNavItem';
 import { SidebarSubmenu } from './sidebar/SidebarSubmenu';
-import { BiLink } from "react-icons/bi";
 
 export interface SidebarProps {
   className?: string;

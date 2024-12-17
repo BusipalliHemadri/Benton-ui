@@ -10,7 +10,6 @@ interface Charge {
   status: "Paid" | "Overdue";
 }
 
-// Utility function to format dates as MM/DD/YYYY
 const formatDate = (date: string | Date | null | undefined): string => {
   if (!date) return "";
   const d = new Date(date);
@@ -80,7 +79,7 @@ const Charges: React.FC = () => {
         </div>
         <button
           onClick={clearDateFilters}
-          className="bg-[#2eaef0] text-white px-4  text-sm py-2 rounded hover:bg-[#2eaef0]"
+          className="bg-[#2eaef0] text-white px-4  text-sm py-2 rounded hover:bg-[#1c8bce]"
         >
           Clear Dates
         </button>
