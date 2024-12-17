@@ -30,7 +30,7 @@ export const SidebarSubmenu: React.FC<SidebarSubmenuProps> = ({
       <button
         onClick={onToggle}
         className={cn(
-          "w-full flex items-center gap-2 p-2 rounded-lg   hover:bg-[#1c8bce] transition-all duration-300",
+          "w-full flex items-center gap-2 p-2 rounded-lg   hover:bg-[#2eaef0] transition-all duration-300",
           !expanded && "justify-center"
         )}
       >

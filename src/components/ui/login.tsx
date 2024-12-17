@@ -117,7 +117,7 @@ export function LoginForm({
                             {/* Login Button */}
                             <Button
                                 type="submit"
-                                className="w-full bg-[#23aef0] text-white hover:bg-[#1c8bce] focus:ring-2 focus:ring-gray-600 focus:outline-none"
+                                className="w-full bg-[#23aef0] text-white hover:bg-[#2eaefo] focus:ring-2 focus:ring-gray-600 focus:outline-none"
                             >
                                 Login
                             </Button>
