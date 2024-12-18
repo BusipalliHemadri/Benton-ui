@@ -40,8 +40,11 @@ export const PropertyDetails: React.FC = () => {
 
   console.log(activeFilter)
   const handleRowClick = (e) => {
-    const selectedRoomId = e.data.roomId;
-    navigate(`/property/${id}/unit/${selectedRoomId}`)
+    console.log(e.data, 'e.data')
+    const selectedRoomId = e.data.roomNumber.split('-')[1];
+
+    console.log(selectedRoomId, 'selected')
+    navigate(`/property/${id}/unit/${selectedRoomId}`, { state: { FloorAndRoom: e.data.roomNumber } })
   };
 
   useEffect(() => {

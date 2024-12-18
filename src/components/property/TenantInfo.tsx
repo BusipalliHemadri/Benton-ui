@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import Overview from './Overview';
 import Charges from './Charges';
 import { properties } from '../../data/properties';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 export const UnitDetails: React.FC = () => {
-    const { id } = useParams();
+    const { id, unitId } = useParams();
+
+    const data = useLocation()
+
+    console.log(data, "data")
+
+
+    console.log(unitId, "id1")
 
     const [activeTab, setActiveTab] = useState<'overview' | 'charges'>('overview');
 
@@ -18,9 +25,15 @@ export const UnitDetails: React.FC = () => {
                     alt="Property"
                     className="rounded-full w-20 h-20 mr-4"
                 />
-                <h2 className="text-xl text-white">
-                    {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
-                </h2>
+                <div>
+                    <h2 className="text-xl text-white">
+                        {properties.find((data) => data.id === Number(id))?.name || 'Property Details'}
+                    </h2>
+                    <h3 className="text-xl text-white">
+                        {data.state.FloorAndRoom}
+                    </h3>
+                </div>
+
                 <div className="ml-auto">
                     <button className="bg-white text-[#2eaef0] text-sm px-4 py-2 rounded hover:bg-gray-200">
                         Edit Unit Info
@@ -28,7 +41,6 @@ export const UnitDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* Tabs */}
             <div className="border-b bg-white shadow-sm">
                 <nav className="flex space-x-4 px-6">
                     <button

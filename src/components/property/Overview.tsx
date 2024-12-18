@@ -12,7 +12,7 @@ const Overview: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-sm text-gray-500">
                     <p>Lease Start</p>
-                    <span>12/17/2024</span>
+                    <span>11/26/2024</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-500">
                     <p>Lease End</p>
