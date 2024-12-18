@@ -7,7 +7,7 @@ import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <FrappeProvider url="http://erp-dev.leremitt.com/">
+    <FrappeProvider url="https://erp-dev.leremitt.com/">
       <App />
       <Toaster />
     </FrappeProvider>
