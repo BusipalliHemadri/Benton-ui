@@ -1,130 +1,113 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { cn } from "../lib/utils";
-// import { Button } from "./ui/button";
-// import { Card, CardContent, CardHeader, CardTitle } from "../";
-// import { Input } from "./ui/input";
-// import { Label } from "./ui/label";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-// import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { cn } from "../../lib/utils";
-import { Button } from "./button";
-import { Label } from "./label";
-import { Input } from "./input";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import { useFrappeAuth } from "frappe-react-sdk";
+import { FiMail, FiLock } from "react-icons/fi";
 
-export function LoginForm({
-    onLogin,
-    className,
-    ...props
-}: React.ComponentPropsWithoutRef<'div'> & { onLogin: () => void }) {
-    const [error, setError] = useState<string | null>(null);
-    const [passwordVisible, setPasswordVisible] = useState(false);
+const LoginForm = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState(""); 
+    const [showPassword, setShowPassword] = useState(false); 
+    const [error, setError] = useState<string | null>(null); 
+
+    const { login } = useFrappeAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
+        if (!email || !password) {
+            setError("Please fill in both username and password.");
+            return;
+        }
 
-        const formData = new FormData(e.currentTarget);
-        const username = formData.get('email')?.toString();
-        const password = formData.get('password')?.toString();
-
-        if (username === "admin" && password === "admin") {
-            setError(null);
-            onLogin();
-            navigate("/properties");
-        } else {
-            setError("Invalid username or password. Please try again.");
+        try {
+            await login({ username: email, password }); 
+            setError(null); 
+            navigate("/properties"); 
+        } catch (err) {
+            setError("Login failed. Please check your username and password.");
         }
     };
 
     return (
-        <div
-            className={cn(
-                "min-h-screen flex items-center justify-center bg-[#f3f4f6]",
-                className
-            )}
-            {...props}
-        >
-            <Card className="w-full max-w-sm shadow-lg bg-white border-gray-300 rounded-lg">
-                <CardHeader className="flex justify-center mb-4">
-                    <CardTitle className="text-xl text-gray-800 text-center">
-                        Login
-                    </CardTitle>
-                </CardHeader>
+        <div className="w-screen h-screen flex items-center justify-center bg-gray-100">
+            <div className="w-[400px] bg-white shadow-lg rounded-lg p-6">
+                <h5 className="text-center text-2xl font-semibold mb-2">Login</h5>
 
-                <CardContent>
-                    <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col gap-6">
-                            {/* Email Field */}
-                            <div className="grid gap-2">
-                                <Label htmlFor="email" className="text-gray-800">
-                                    Username
-                                </Label>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    type="text"
-                                    placeholder="Enter username"
-                                    required
-                                    className="bg-white text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                                    onChange={() => setError(null)} // Clear error on change
-                                />
-                            </div>
+                {/* Email Input */}
+                <div className="relative mb-4">
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <FiMail size={16} />
+                    </span>
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setError(null); // Clear error on input change
+                        }}
+                        placeholder="Administrator"
+                        className="w-full pl-10 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                </div>
 
-                            {/* Password Field */}
-                            <div className="grid gap-2">
-                                <Label htmlFor="password" className="text-gray-800">
-                                    Password
-                                </Label>
-                                <div className="relative">
-                                    <Input
-                                        id="password"
-                                        name="password"
-                                        type={passwordVisible ? "text" : "password"}
-                                        placeholder="Enter password"
-                                        required
-                                        className="bg-white text-gray-800 border-gray-300 focus:ring-2 focus:ring-gray-400 focus:outline-none pr-12" // Add padding to ensure icon doesn't overlap text
-                                        onChange={() => setError(null)} // Clear error on change
-                                    />
-                                    <button
-                                        type="button"
-                                        className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-800"
-                                        onClick={() => setPasswordVisible(!passwordVisible)}
-                                    >
-                                        {passwordVisible ? <FiEyeOff /> : <FiEye />}
-                                    </button>
-                                </div>
-                            </div>
+                {/* Password Input */}
+                <div className="relative mb-4">
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <FiLock size={16} />
+                    </span>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setError(null); // Clear error on input change
+                        }}
+                        placeholder="Password"
+                        className="w-full pl-10 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-[14px]"
+                    >
+                        {showPassword ? "Hide" : "Show"}
+                    </button>
+                </div>
 
+                {/* Error Message */}
+                {error && (
+                    <p className="text-red-500 text-sm text-center mb-4">{error}</p>
+                )}
 
-                            {/* Forgot Password */}
-                            <div className="text-right">
-                                <button
-                                    type="button"
-                                    onClick={() => navigate("/forgot-password")}
-                                    className="text-sm text-gray-600 hover:text-gray-800"
-                                >
-                                    Forgot Password?
-                                </button>
-                            </div>
+                {/* Forgot Password */}
+                <div className="text-right mb-4">
+                    <a href="/forgot-password" className="text-gray-600 text-sm hover:underline">
+                        Forgot Password?
+                    </a>
+                </div>
 
-                            {/* Error Message */}
-                            {error && (
-                                <p className="text-sm text-red-500 text-center">{error}</p>
-                            )}
+                {/* Login Button */}
+                <button
+                    onClick={handleSubmit}
+                    className="w-full bg-black text-white py-1 border rounded-md hover:bg-gray-800 transition"
+                >
+                    Login
+                </button>
 
-                            {/* Login Button */}
-                            <Button
-                                type="submit"
-                                className="w-full bg-[#23aef0] text-white hover:bg-[#2eaefo] focus:ring-2 focus:ring-gray-600 focus:outline-none"
-                            >
-                                Login
-                            </Button>
-                        </div>
-                    </form>
-                </CardContent>
-            </Card>
+                {/* Divider */}
+                <div className="flex items-center justify-center mt-4">
+                    <span className="text-gray-400">or</span>
+                </div>
+
+                {/* Login with Email Link Button */}
+                <button
+                    onClick={() => alert("Login with Email Link")}
+                    className="w-full mt-4 bg-gray-200 py-1 rounded-md hover:bg-gray-300 transition"
+                >
+                    Login with Email Link
+                </button>
+            </div>
         </div>
     );
-}
+};
+
+export default LoginForm;
