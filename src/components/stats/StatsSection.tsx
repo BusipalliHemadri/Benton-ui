@@ -2,7 +2,7 @@ import React from 'react';
 import { Home, UserCheck, UserX } from 'lucide-react';
 import StatsCard from './StatsCard';
 import { Property, PropertyStatus } from '../../types/property';
-import { AddPropertyDialog } from '../forms/AddPropertyDialog';
+import { AddPropertyDialog } from '../forms/property forms/AddProperty';
 
 interface StatsSectionProps {
   properties: Property[];

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { DashboardLayout } from './components/layout/DashboardLayout';
-import { Dashboard } from './pages/Dashboard';
-import { PropertiesPage } from './pages/PropertiesPage';
-import { PropertyDetails } from './components/property/PropertyDetails';
-import { AddPropertyForm } from './components/forms/AddPropertyForm';
-import Header from './components/header'; 
-import { UnitDetails } from './components/property/TenantInfo';
+import { Dashboard } from './pages/dashboard/Dashboard';
+import { PropertiesPage } from './pages/property';
+import { PropertyDetails } from './pages/property/components/PropertyDetails';
+import { AddPropertyForm } from './components/forms/property forms/AddProperty/AddPropertyForm';
+import Header from './components/header'; // Import the Header component
 import { LoginForm } from './components/ui/login';
+import { UnitDetails } from './pages/property/components/TenantInfo';
 
 export const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
