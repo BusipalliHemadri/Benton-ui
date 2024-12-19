@@ -23,7 +23,7 @@ const LoginForm = ({ onLogin }) => {
             const Response = await login({ username: email, password });
             if (Response.message === 'Logged In') {
                 onLogin()
-                // navigate("/properties");
+                navigate("/properties");
                 console.log(Response, 'responmse')
             }
 

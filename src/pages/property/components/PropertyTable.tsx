@@ -19,7 +19,7 @@ interface Customer {
 const PropertyTable: React.FC = () => {
   const navigate = useNavigate();
 
-  const { data, isLoading, error } = useFrappeGetDocList<Customer>("User", {
+  const { data, isLoading, error } = useFrappeGetDocList<Customer>("Customer", {
     fields: ["name"],
   });
 
