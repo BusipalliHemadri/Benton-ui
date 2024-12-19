@@ -6,9 +6,9 @@ import { PropertiesPage } from './pages/property';
 import { PropertyDetails } from './pages/property/components/PropertyDetails';
 import { AddPropertyForm } from './components/forms/property forms/AddProperty/AddPropertyForm';
 import Header from './components/header'; // Import the Header component
-import { LoginForm } from './components/ui/login';
 import { UnitDetails } from './pages/property/components/TenantInfo';
 import { RentersTable } from './pages/renters/components/RentersTable';
+import LoginForm from './components/ui/login';
 
 export const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
