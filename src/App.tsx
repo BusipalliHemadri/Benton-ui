@@ -7,7 +7,7 @@ import { PropertyDetails } from './components/property/PropertyDetails';
 import { AddPropertyForm } from './components/forms/AddPropertyForm';
 import Header from './components/header'; 
 import { UnitDetails } from './components/property/TenantInfo';
-import LoginForm from './components/ui/login';
+import { LoginForm } from './components/ui/login';
 
 export const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
