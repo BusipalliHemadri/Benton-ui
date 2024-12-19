@@ -8,6 +8,7 @@ import { AddPropertyForm } from './components/forms/property forms/AddProperty/A
 import Header from './components/header'; // Import the Header component
 import { LoginForm } from './components/ui/login';
 import { UnitDetails } from './pages/property/components/TenantInfo';
+import { RentersTable } from './pages/renters/components/RentersTable';
 
 export const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -90,6 +91,19 @@ export const App: React.FC = () => {
             isAuthenticated ? (
               <DashboardLayout>
                 <UnitDetails />
+              </DashboardLayout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+
+        <Route
+          path="/renters"
+          element={
+            isAuthenticated ? (
+              <DashboardLayout>
+                <RentersTable />
               </DashboardLayout>
             ) : (
               <Navigate to="/" />

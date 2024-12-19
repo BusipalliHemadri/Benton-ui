@@ -2,7 +2,8 @@ export const ROUTES = {
   HOME: '/',
   PROPERTIES: '/properties',
   ADD_PROPERTY: '/properties/add',
-  PROPERTY_DETAILS: '/property/:id'
+  PROPERTY_DETAILS: '/property/:id',
+  RENTERS:'/renters'
 } as const;
 
 export const TABLE_PAGE_SIZES = [10, 20, 30, 40, 50] as const;

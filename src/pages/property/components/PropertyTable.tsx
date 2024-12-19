@@ -10,7 +10,6 @@ import DataGrid, {
   ColumnFixing
 } from 'devextreme-react/data-grid';
 import { Property, PropertyStatus } from '../../../types/property';
-import { StatusCell } from '../../../components/stats/StatsCard'
 import 'devextreme/dist/css/dx.light.css';
 import { TABLE_PAGE_SIZES } from '../../../config/constants';
 

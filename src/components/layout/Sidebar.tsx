@@ -16,12 +16,13 @@ export interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [expanded, setExpanded] = useState(false);
   const [showPropertySubmenu, setShowPropertySubmenu] = useState(false);
+  const [showRentersSubmenu, setShowRentersSubmenu] = useState(false); // New state for Renters submenu
   const navigate = useNavigate();
 
   return (
     <div
       className={cn(
-        "h-screen  left-0 top-0 z-40 flex flex-col transition-all duration-300  shadow-sm bg-card",
+        "h-screen left-0 top-0 z-40 flex flex-col transition-all duration-300 shadow-sm bg-card",
         expanded ? "w-60" : "w-16",
         className
       )}
@@ -29,15 +30,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
       onMouseLeave={() => {
         setExpanded(false);
         setShowPropertySubmenu(false);
+        setShowRentersSubmenu(false); // Collapse Renters submenu
       }}
     >
-      {/* <div className="p-4 flex items-center justify-between  text-[#000]">
-        <span className={cn("overflow-hidden transition-all", expanded ? "w-32" : "w-0")}>
-          Mackeco Properties
-        </span>
-        <BiLink className="w-10 h-10 text-[#ffc013]" />
-      </div> */}
-
       <nav className="flex items-center flex-col gap-2 p-4">
         <SidebarNavItem
           icon={<LayoutDashboard className="w-4 h-4 text-[#000]" />}
@@ -54,7 +49,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           onToggle={() => expanded && setShowPropertySubmenu(!showPropertySubmenu)}
           items={[
             {
-              icon: <Building2 className="w-4 h-4 text-[#000] " />,
+              icon: <Building2 className="w-4 h-4 text-[#000]" />,
               label: "View All Properties",
               onClick: () => navigate('/properties')
             },
@@ -62,6 +57,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               icon: <PlusCircle className="w-4 h-4 text-[#000]" />,
               label: "Add Property",
               onClick: () => navigate('/properties/add')
+            }
+          ]}
+        />
+
+        <SidebarSubmenu
+          icon={<Building2 className="w-4 h-4 text-[#000]" />}
+          label="Renters"
+          expanded={expanded}
+          showSubmenu={showRentersSubmenu}
+          onToggle={() => expanded && setShowRentersSubmenu(!showRentersSubmenu)}
+          items={[
+            {
+              icon: <Building2 className="w-4 h-4 text-[#000]" />,
+              label: "All Renters",
+              onClick: () => navigate('/renters')
             }
           ]}
         />

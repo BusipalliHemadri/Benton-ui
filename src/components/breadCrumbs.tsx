@@ -8,6 +8,7 @@ const routeBreadcrumbMap: { [key: string]: string } = {
   [ROUTES.PROPERTIES]: "Properties",
   [ROUTES.ADD_PROPERTY]: "Add Property",
   [ROUTES.PROPERTY_DETAILS]: "Property Details",
+  [ROUTES.RENTERS]:"Renters"
 
 };
 
